@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Match Result for: {{ vacancy.title }}</h3>
+<p>Similarity: <strong>{{ '%.3f'|format(similarity) }}</strong></p>
+{% if matched %}
+  <div class="alert alert-success">This candidate matches the vacancy requirements.</div>
+{% else %}
+  <div class="alert alert-warning">This candidate does not sufficiently match the vacancy.</div>
+{% endif %}
+<h5>Extracted Resume Text</h5>
+<pre style="max-height:400px;overflow:auto;">{{ resume_text[:4000] }}</pre>
+{% endblock %}

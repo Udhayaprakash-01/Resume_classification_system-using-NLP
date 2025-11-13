@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>HR Dashboard</h3>
+<a class="btn btn-primary" href="{{ url_for('add_vacancy') }}">Add Vacancy</a>
+<h4 class="mt-3">Your Vacancies</h4>
+<ul class="list-group">
+  {% for v in vacancies %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ v.title }}</strong><br>
+        {{ v.description[:120] }}...
+      </div>
+      <div>
+        <a class="btn btn-sm btn-outline-primary" href="{{ url_for('match_resume', vacancy_id=v.id) }}">Match Resume</a>
+      </div>
+    </li>
+  {% else %}
+    <li class="list-group-item">No vacancies yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+flask
+flask_sqlalchemy
+flask_login
+sqlalchemy
+pymysql
+sentence-transformers
+pdfminer.six
+python-docx
+docx2txt
+requests
+werkzeug
+numpy

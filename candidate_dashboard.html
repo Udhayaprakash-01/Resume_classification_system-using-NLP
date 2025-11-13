@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Candidate Dashboard</h3>
+<p>Upload resume to get job role recommendations.</p>
+<a class="btn btn-primary" href="{{ url_for('upload_resume') }}">Upload Resume</a>
+<a class="btn btn-secondary" href="{{ url_for('chatbot') }}">Open Chatbot</a>
+{% endblock %}

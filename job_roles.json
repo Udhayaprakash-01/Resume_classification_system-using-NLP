@@ -1,0 +1,7 @@
+[
+  {"id": "data_scientist", "title": "Data Scientist", "desc": "Skills: Python, Machine Learning, Statistics, pandas, scikit-learn, deep learning"},
+  {"id": "web_developer", "title": "Web Developer", "desc": "Skills: HTML, CSS, JavaScript, React, Node.js, REST APIs"},
+  {"id": "marketing_executive", "title": "Marketing Executive", "desc": "Skills: SEO, Content Marketing, Social Media, Google Analytics"},
+  {"id": "devops_engineer", "title": "DevOps Engineer", "desc": "Skills: AWS, Docker, Kubernetes, CI/CD, Terraform"},
+  {"id": "nlp_engineer", "title": "NLP Engineer", "desc": "Skills: NLP, Transformers, Python, PyTorch, text processing"}
+]

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Add Vacancy</h3>
+<form method="post">
+  <div class="mb-3"><label>Title</label><input class="form-control" name="title" required></div>
+  <div class="mb-3"><label>Description (skills / responsibilities)</label><textarea class="form-control" name="desc" rows="5" required></textarea></div>
+  <div class="mb-3"><label>Experience</label><input class="form-control" name="experience"></div>
+  <button class="btn btn-success">Add</button>
+</form>
+{% endblock %}

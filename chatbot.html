@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>AI Chatbot</h3>
+<div class="mb-3">
+  <label>Upload resume (optional) — chatbot will use this as context</label>
+  <input id="fileInput" type="file" class="form-control">
+</div>
+<div class="mb-3">
+  <textarea id="resumeText" class="form-control" rows="6" placeholder="(or paste resume text here)"></textarea>
+</div>
+<div class="mb-3">
+  <input id="message" class="form-control" placeholder="Ask something...">
+</div>
+<div class="mb-3">
+  <button id="sendBtn" class="btn btn-primary">Send</button>
+</div>
+<div id="chatArea"></div>
+<script>
+async function fileToText(file){
+  // We do a simple client-side read to include in prompt (server-side parsing recommended for large files)
+  return await new Promise((res, rej)=>{
+    const r = new FileReader();
+    r.onload = ()=>res(r.result);
+    r.onerror = rej;
+    r.readAsText(file);
+  });
+}
+document.getElementById('sendBtn').onclick = async ()=>{
+  const msg = document.getElementById('message').value;
+  let resumeText = document.getElementById('resumeText').value || '';
+  const f = document.getElementById('fileInput').files[0];
+  if(f && !resumeText){
+    try{ resumeText = await fileToText(f); }catch(e){ console.error(e); }
+  }
+  const resp = await fetch('{{ url_for('api_chat') }}', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({message: msg, resume_text: resumeText})
+  });
+  const j = await resp.json();
+  const chatArea = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className='card mt-2 p-2';
+  div.innerHTML = '<b>You:</b> '+msg+'<hr><b>Bot:</b> '+j.answer;
+  chatArea.prepend(div);
+};
+</script>
+{% endblock %}
